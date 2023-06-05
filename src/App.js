@@ -36,8 +36,15 @@ const listComp = () => {
 };
 
 export default function App() {
+  const [title,setTitle]= useState('Player HUD');
+  useEffect(()=>{
+    document.title = title;
+  })
   return (
     <div className="App">
+      <label htmlFor="titleChange">Change Page Title</label>
+      <input type="text" id="titleChange" onChange={(e)=>setTitle(e.target.value)}/>
+      <hr/>
       <header className="App-header">{listComp()}</header>
     </div>
   );
