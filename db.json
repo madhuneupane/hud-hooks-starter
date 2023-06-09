@@ -1,34 +1,36 @@
 {
   "players": [
-      {
-    "name": "Mark",
-    "race": "Human",
-    "status": "Full-Health",
-    "comment": "",
-    "health": "150",
-    "stamina": "200",
-    "gold": "75",
-    "location": ""
-  },
-  {
-    "name": "Goerge",
-    "race": "Demon",
-    "status": "Enraged",
-    "comment": "I'm so ANGRY!!!!",
-    "health": "150",
-    "stamina": "200",
-    "gold": "75",
-    "location": ""
-  },
-  {
-    "name": "Angela",
-    "race": "Fairy",
-    "status": "Full-Health",
-    "comment": "",
-    "health": "150",
-    "stamina": "200",
-    "gold": "75",
-    "location": ""
-  }
+    {
+      "name": "Mark",
+      "race": "Human",
+      "status": "Full-Health",
+      "comment": "",
+      "health": 285,
+      "stamina": 180,
+      "gold": 51,
+      "id": 1
+    },
+    {
+      "name": "Goerge",
+      "race": "Demon",
+      "status": "Enraged",
+      "comment": "I'm so ANGRY!!!!",
+      "health": 180,
+      "stamina": "200",
+      "gold": 69,
+      "location": "",
+      "id": 2
+    },
+    {
+      "name": "Angela",
+      "race": "Fairy",
+      "status": "Full-Health",
+      "comment": "",
+      "health": "150",
+      "stamina": "200",
+      "gold": "75",
+      "location": "",
+      "id": 3
+    }
   ]
 }

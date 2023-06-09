@@ -9,9 +9,13 @@ import Character from "./components/Character";
 export default function App() {
   const [title,setTitle]= useState('Player HUD');
   const [players, setPlayers] = useState([]);
+
+  useEffect(()=>{
+    document.title = title;
+  })
   useEffect(()=>{
     // eslint-disable-next-line
-    document.title = title;
+    
 
      const getPlayers = async () => {
       const allPlayers = await fetchPlayers();
@@ -26,13 +30,17 @@ export default function App() {
     return data;
   };
   const listComp = () => {
-  return players.map((item, i) => (
+  return players.map((item) => (
     <Character
-      key={i}
+      key={item.id}
       name={item.name}
       race={item.race}
       status={item.status}
       comment={item.comment}
+      health = {item.health}
+      stamina = {item.stamina}
+      gold = {item.gold}
+      id = {item.id}
     />
   ));
 };
