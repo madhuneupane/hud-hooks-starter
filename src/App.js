@@ -2,29 +2,31 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Character from "./components/Character";
 
-const charArray = [
-  {
-    name: "Mark",
-    race: "Human",
-    status: "Full-Health",
-    comment: "",
-  },
-  {
-    name: "Goerge",
-    race: "Demon",
-    status: "Enraged",
-    comment: "I'm so ANGRY!!!!",
-  },
-  {
-    name: "Angela",
-    race: "Fairy",
-    status: "Full-Health",
-    comment: "",
-  },
-];
 
-const listComp = () => {
-  return charArray.map((item, i) => (
+
+
+
+export default function App() {
+  const [title,setTitle]= useState('Player HUD');
+  const [players, setPlayers] = useState([]);
+  useEffect(()=>{
+    // eslint-disable-next-line
+    document.title = title;
+
+     const getPlayers = async () => {
+      const allPlayers = await fetchPlayers();
+      setPlayers(allPlayers);
+    };
+    getPlayers();
+  },[])
+
+   const fetchPlayers = async () => {
+    const res = await fetch("http://localhost:5000/players");
+    const data = await res.json();
+    return data;
+  };
+  const listComp = () => {
+  return players.map((item, i) => (
     <Character
       key={i}
       name={item.name}
@@ -34,12 +36,6 @@ const listComp = () => {
     />
   ));
 };
-
-export default function App() {
-  const [title,setTitle]= useState('Player HUD');
-  useEffect(()=>{
-    document.title = title;
-  })
   return (
     <div className="App">
       <label htmlFor="titleChange">Change Page Title</label>
