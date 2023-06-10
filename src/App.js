@@ -40,6 +40,7 @@ export default function App() {
       health = {item.health}
       stamina = {item.stamina}
       gold = {item.gold}
+      location = {item.location}
       id = {item.id}
     />
   ));

@@ -4,10 +4,11 @@
       "name": "Mark",
       "race": "Human",
       "status": "Full-Health",
-      "comment": "",
+      "comment": "sss",
       "health": 285,
       "stamina": 180,
       "gold": 51,
+      "location": "Vancouver Tower - Level 23",
       "id": 1
     },
     {
@@ -29,7 +30,7 @@
       "health": "150",
       "stamina": "200",
       "gold": "75",
-      "location": "",
+      "location": "Burnaby- level 12",
       "id": 3
     }
   ]

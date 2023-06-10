@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import "./Character.css";
+import PopUp from "./PopUp";
 
 const Character = (props) => {
   //Name
@@ -17,12 +18,28 @@ const Character = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   //content of comment input field
   const [comment, setComment] = useState("");
+  //location
+  const [location, setLocation] = useState(props.location);
+  //Is location popup open
+  const [isLocationOpen, setIsLocationOpen] = useState(false);
 
   const fetchPlayer = async () => {
     const res = await fetch(`http://localhost:5000/players/${props.id}`);
     const data = await res.json();
     console.log(data);
     return data;
+  };
+
+  const openPopup = () => {
+    setIsLocationOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsLocationOpen(false);
+  };
+
+  const alterLocation = (data) => {
+    console.log(data);
   };
 
   const alterComment = () => {
@@ -54,6 +71,7 @@ const Character = (props) => {
         Stamina at {stamina}
       </p>
       <p>Gold: {gold}</p>
+      <p className={location ? "visible" : "hidden"}>Location: {location}</p>
       <p className={commentOnDisplay ? "visible" : "hidden"}>
         Comment: {commentOnDisplay}
       </p>
@@ -65,6 +83,14 @@ const Character = (props) => {
         {commentOnDisplay ? "Change Comment" : "Add Comment"}
       </button>
       <br />
+      <button onClick={openPopup}>
+        {location ? "Change Location (Costs 1 Gold)" : "Add Location"}
+      </button>
+      <PopUp
+        isOpen={isLocationOpen}
+        onClose={closePopup}
+        alterLocation={alterLocation}
+      ></PopUp>
 
       {isOpen && (
         <div>
