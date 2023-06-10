@@ -38,8 +38,21 @@ const Character = (props) => {
     setIsLocationOpen(false);
   };
 
-  const alterLocation = (data) => {
-    console.log(data);
+  const alterLocation = async (data) => {
+    setLocation(data);
+    let updatedPlayer = await fetchPlayer();
+    setGold(parseInt(gold) - 1);
+    updatedPlayer.gold = parseInt(updatedPlayer.gold) - 1;
+
+    updatedPlayer.location = data;
+
+    await fetch(`http://localhost:5000/players/${updatedPlayer.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(updatedPlayer),
+    });
   };
 
   const alterComment = () => {
@@ -83,14 +96,6 @@ const Character = (props) => {
         {commentOnDisplay ? "Change Comment" : "Add Comment"}
       </button>
       <br />
-      <button onClick={openPopup}>
-        {location ? "Change Location (Costs 1 Gold)" : "Add Location"}
-      </button>
-      <PopUp
-        isOpen={isLocationOpen}
-        onClose={closePopup}
-        alterLocation={alterLocation}
-      ></PopUp>
 
       {isOpen && (
         <div>
@@ -108,6 +113,15 @@ const Character = (props) => {
       {!isOpen && (
         <div>
           {" "}
+          <button onClick={openPopup}>
+            {location ? "Change Location (Costs 1 Gold)" : "Add Location"}
+          </button>
+          <PopUp
+            isOpen={isLocationOpen}
+            onClose={closePopup}
+            alterLocation={alterLocation}
+          ></PopUp>
+          <br />
           <button
             onClick={async () => {
               let updatedPlayer = await fetchPlayer();

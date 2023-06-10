@@ -4,11 +4,11 @@
       "name": "Mark",
       "race": "Human",
       "status": "Full-Health",
-      "comment": "sss",
-      "health": 285,
-      "stamina": 180,
-      "gold": 51,
-      "location": "Vancouver Tower - Level 23",
+      "comment": "Angry",
+      "health": 315,
+      "stamina": 185,
+      "gold": 43,
+      "location": "nepal",
       "id": 1
     },
     {
@@ -18,7 +18,7 @@
       "comment": "I'm so ANGRY!!!!",
       "health": 180,
       "stamina": "200",
-      "gold": 69,
+      "gold": 67,
       "location": "",
       "id": 2
     },
@@ -30,7 +30,7 @@
       "health": "150",
       "stamina": "200",
       "gold": "75",
-      "location": "Burnaby- level 12",
+      "location": "nepal",
       "id": 3
     }
   ]
