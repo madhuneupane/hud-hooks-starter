@@ -23,6 +23,21 @@ const Character = (props) => {
   //Is location popup open
   const [isLocationOpen, setIsLocationOpen] = useState(false);
 
+  // useEffect(async () => {
+  //   console.log(name);
+  //   let updatedPlayer = await fetchPlayer();
+
+  //   updatedPlayer.name = name;
+
+  //   await fetch(`http://localhost:5000/players/${updatedPlayer.id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(updatedPlayer),
+  //   });
+  // }, [name]);
+
   const fetchPlayer = async () => {
     const res = await fetch(`http://localhost:5000/players/${props.id}`);
     const data = await res.json();
@@ -192,8 +207,21 @@ const Character = (props) => {
           <input
             type="text"
             id="nameChange"
-            onChange={(e) => {
+            onChange={async (e) => {
               setName(e.target.value);
+              let nameEntered = e.target.value;
+              let updatedPlayer = await fetchPlayer();
+
+              updatedPlayer.name = nameEntered;
+
+              await fetch(`http://localhost:5000/players/${updatedPlayer.id}`, {
+                method: "PUT",
+                headers: {
+                  "Content-type": "application/json",
+                },
+                body: JSON.stringify(updatedPlayer),
+              });
+              console.log(name);
             }}
           />{" "}
         </div>

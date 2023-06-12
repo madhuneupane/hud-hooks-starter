@@ -1,14 +1,14 @@
 {
   "players": [
     {
-      "name": "Mark",
+      "name": "Madhu",
       "race": "Human",
       "status": "Full-Health",
-      "comment": "Angry",
+      "comment": "",
       "health": 315,
       "stamina": 185,
-      "gold": 43,
-      "location": "nepal",
+      "gold": 42,
+      "location": "Nepal",
       "id": 1
     },
     {
@@ -18,8 +18,8 @@
       "comment": "I'm so ANGRY!!!!",
       "health": 180,
       "stamina": "200",
-      "gold": 67,
-      "location": "",
+      "gold": 65,
+      "location": "Vancouver",
       "id": 2
     },
     {
