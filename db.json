@@ -4,10 +4,10 @@
       "name": "Madhu",
       "race": "Human",
       "status": "Full-Health",
-      "comment": "",
+      "comment": "I am a developer",
       "health": 315,
-      "stamina": 185,
-      "gold": 42,
+      "stamina": 190,
+      "gold": 39,
       "location": "Nepal",
       "id": 1
     },
@@ -18,8 +18,8 @@
       "comment": "I'm so ANGRY!!!!",
       "health": 180,
       "stamina": "200",
-      "gold": 65,
-      "location": "Vancouver",
+      "gold": 61,
+      "location": "USA",
       "id": 2
     },
     {

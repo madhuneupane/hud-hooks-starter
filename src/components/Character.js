@@ -41,7 +41,6 @@ const Character = (props) => {
   const fetchPlayer = async () => {
     const res = await fetch(`http://localhost:5000/players/${props.id}`);
     const data = await res.json();
-    console.log(data);
     return data;
   };
 
@@ -56,8 +55,10 @@ const Character = (props) => {
   const alterLocation = async (data) => {
     setLocation(data);
     let updatedPlayer = await fetchPlayer();
-    setGold(parseInt(gold) - 1);
-    updatedPlayer.gold = parseInt(updatedPlayer.gold) - 1;
+    if (updatedPlayer.location) {
+      setGold(parseInt(gold) - 1);
+      updatedPlayer.gold = parseInt(updatedPlayer.gold) - 1;
+    }
 
     updatedPlayer.location = data;
 
@@ -142,7 +143,6 @@ const Character = (props) => {
               let updatedPlayer = await fetchPlayer();
               updatedPlayer.health = parseInt(updatedPlayer.health) + 10;
               updatedPlayer.gold = parseInt(updatedPlayer.gold) - 2;
-              console.log(updatedPlayer);
               setHealth(parseInt(health) + 10);
               setGold(parseInt(gold) - 2);
 
