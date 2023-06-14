@@ -3,20 +3,16 @@ import "./App.css";
 import Character from "./components/Character";
 
 
-
-
-
 export default function App() {
   const [title,setTitle]= useState('Player HUD');
+  //useState to store all the characters
   const [players, setPlayers] = useState([]);
 
   useEffect(()=>{
     document.title = title;
   })
   useEffect(()=>{
-    // eslint-disable-next-line
-    
-
+   
      const getPlayers = async () => {
       const allPlayers = await fetchPlayers();
       setPlayers(allPlayers);

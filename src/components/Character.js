@@ -23,21 +23,7 @@ const Character = (props) => {
   //Is location popup open
   const [isLocationOpen, setIsLocationOpen] = useState(false);
 
-  // useEffect(async () => {
-  //   console.log(name);
-  //   let updatedPlayer = await fetchPlayer();
-
-  //   updatedPlayer.name = name;
-
-  //   await fetch(`http://localhost:5000/players/${updatedPlayer.id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(updatedPlayer),
-  //   });
-  // }, [name]);
-
+  //To fetch individual player
   const fetchPlayer = async () => {
     const res = await fetch(`http://localhost:5000/players/${props.id}`);
     const data = await res.json();
@@ -45,16 +31,21 @@ const Character = (props) => {
   };
 
   const openPopup = () => {
+    //setting popup open as true
     setIsLocationOpen(true);
   };
 
   const closePopup = () => {
+    //setting popup open as false
     setIsLocationOpen(false);
   };
 
+  //OnClickListener function for save location button
+  //This function is passed as props in PopUp component
   const alterLocation = async (data) => {
     setLocation(data);
     let updatedPlayer = await fetchPlayer();
+    //if condition to reduce gold for update existing location
     if (updatedPlayer.location) {
       setGold(parseInt(gold) - 1);
       updatedPlayer.gold = parseInt(updatedPlayer.gold) - 1;
@@ -72,10 +63,12 @@ const Character = (props) => {
   };
 
   const alterComment = () => {
+    //Boolean set to true to show input field for adding comment
     setIsOpen(true);
   };
 
   const submitComment = async () => {
+    //Once comment is submitted, input field is hide bt setting isOpen state false
     setIsOpen(false);
     setComment("");
     setCommentOnDisplay(comment);
@@ -208,6 +201,7 @@ const Character = (props) => {
             type="text"
             id="nameChange"
             onChange={async (e) => {
+              //whenever user changes the name it is updated on db
               setName(e.target.value);
               let nameEntered = e.target.value;
               let updatedPlayer = await fetchPlayer();
